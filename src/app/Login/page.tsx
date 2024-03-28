@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
@@ -17,8 +15,10 @@ export default function Login({ className, ...props }: UserAuthFormProps) {
     event.preventDefault()
     setIsLoading(true)
 
+    // Simulated authentication logic (replace with actual logic)
     setTimeout(() => {
       setIsLoading(false)
+      // Handle authentication success or failure
     }, 3000)
   }
 
@@ -42,7 +42,7 @@ export default function Login({ className, ...props }: UserAuthFormProps) {
             />
           </div>
           <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="email">
+            <Label className="sr-only" htmlFor="password">
               Password
             </Label>
             <Input
@@ -50,15 +50,15 @@ export default function Login({ className, ...props }: UserAuthFormProps) {
               placeholder="Enter Your Password"
               type="password"
               autoCapitalize="none"
-              autoComplete="password"
+              autoComplete="current-password"
               autoCorrect="off"
               disabled={isLoading}
             />
           </div>
           <Button disabled={isLoading}>
-            {isLoading && (
+            {isLoading ? (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-            )}
+            ) : null}
             Sign In 
           </Button>
         </div>
